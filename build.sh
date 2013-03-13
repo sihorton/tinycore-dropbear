@@ -1,7 +1,14 @@
 export CFLAGS="-mtune=generic -Os -pipe"
 export CXXFLAGS="-mtune=generic -Os -pipe"
+
 BUILT=dropbear-2012.55
 TMPDIR=out
+
+if [ "$1" == "clean" ]; then
+	rm -rf $TMPDIR
+	exit 0
+fi
+
 cd "$BUILT/"
 
 make clean
@@ -45,7 +52,14 @@ cd ../../../../
 #######################
 # Create extension    #
 #######################
-ls -l
-mksquashfs $TMPDIR dropbear.tcz
+mkdir release
+cd release
+mksquashfs ../$TMPDIR dropbear.tcz
 md5sum dropbear.tcz > dropbear.tcz.md5.txt
+cp ../dropbear.tcz.info .
+tar zcf dropbear.tar.gz dropbear.tcz dropbear.tcz.md5.txt
+bcrypt dropbear.tar.gz <<END
+tinycore
+tinycore
+END
 
