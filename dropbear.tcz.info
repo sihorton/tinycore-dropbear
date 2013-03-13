@@ -1,0 +1,13 @@
+Title:          dropbear.tcz
+Description:    Small SSH client and server
+Version:        2012.55
+Author:         Matt Johnston
+Original-site:  http://matt.ucc.asn.au/dropbear/dropbear.html
+Copying-policy: MIT
+Size:		92K
+Extension_by:   sihorton,Curaga
+Tags:	    Small SSH client server
+Comments:       To start the server: /etc/init.d/dropbear start
+Change-log:	2010-01-17 Original
+	        2010-04-10 Added status check to init script.
+Current:        2013-03-13 Updated to v2012.55
